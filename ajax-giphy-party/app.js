@@ -13,20 +13,21 @@ debugger;
       api_key: "MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym",
     },
   });
-console.log(response)
+makeGifLi(response.data.data)
 }
 
 // create li to put the gif images in gif container
 function makeGifLi(gifs) {
   debugger;
-  let numResults = response.data.length;
+  let numResults = gifs.length;
   const randomIdx = Math.floor(Math.random() * numResults);
   const newLi = document.createElement("LI");
   const $newGif = $("<img>", {
-    src: response.data[randomIdx].images.original.url,
+    src: gifs[randomIdx].images.original.url,
     class: "gif",
   });
   newLi.append($newGif);
+  document.getElementById("ulContainer").append(newLi);
 }
 //add event listener to the submit button
 const submitBtn = document.querySelector("#searchBtn");
